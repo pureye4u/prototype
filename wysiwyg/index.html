@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Wysiwyg</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Wysiwyg">
+<meta name="author" content="pureye4u">
+
+<!-- Libries -->
+<link rel="stylesheet" type="text/css" media="all" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+<style type="text/css">
+.container {
+	padding: 0 15px;
+}
+.content {
+	margin-top: 30px;
+}
+.panel-default > .panel-heading {
+	background-color: #ffffff;
+}
+.panel-default.selected > .panel-heading {
+	background-color: #f5f5f5;
+}
+.panel-default > .panel-body {
+	display: none;
+}
+.panel-default.selected > .panel-body {
+	display: block;
+}
+.panel-body {
+	border-bottom: 1px solid #ddd;
+}
+.editor {
+	border-bottom: solid 1px black;
+	padding-bottom: 20px;
+}
+</style>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js" charset="utf-8"></script> 
+
+<!-- CK Editor -->
+<script type="text/javascript" src="//cdn.ckeditor.com/4.5.6/basic/ckeditor.js" charset="utf-8"></script>
+
+<!-- Tiny MCE -->
+<script type="text/javascript" src="//cdn.tinymce.com/4/tinymce.min.js" charset="utf-8"></script>
+
+<!-- Naver Smart Editor -->
+<script type="text/javascript" src="js/HuskyEZCreator.js" charset="utf-8"></script>
+
+<!-- CL Editor -->
+<link rel="stylesheet" type="text/css" media="all" href="http://premiumsoftware.net/content/cleditor/jquery.cleditor.min.css" />
+<script type="text/javascript" src="http://premiumsoftware.net/content/cleditor/jquery.cleditor.min.js" charset="utf-8"></script>
+
+<!-- Froala Editor -->
+<link rel="stylesheet" type="text/css" media="all" type="text/css" href="css/froala_editor.min.css" />
+<link rel="stylesheet" type="text/css" media="all" type="text/css" href="css/froala_style.min.css" />
+<script type="text/javascript" src="js/froala_editor.min.js" charset="utf-8"></script>
+
+<!-- Redactor Editor -->
+<link rel="stylesheet" type="text/css" media="all" href="//imperavi.com/assets/js/redactor/redactor.css" />
+<script type="text/javascript" src="//imperavi.com/assets/js/redactor/redactor.js" charset="utf-8"></script>
+<script type="text/javascript" src="//imperavi.com/storage/redactor/langs/ko.js" charset="utf-8"></script>
+
+<!-- Summernote Editor -->
+<link rel="stylesheet" type="text/css" media="all" href="//cdnjs.cloudflare.com/ajax/libs/summernote/0.7.0/summernote.css">
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/summernote/0.7.0/summernote.js" charset="utf-8"></script>
+
+<!-- Alloy Editor -->
+<link rel="stylesheet" type="text/css" media="all" href="//alloyeditor.com/website/js/alloy-editor/assets/alloy-editor-ocean-min.css">
+<script type="text/javascript" src="//alloyeditor.com/website/js/alloy-editor/alloy-editor-all-min.js" charset="utf-8"></script>
+
+<!-- Trumbowyg -->
+<script type="text/javascript" src="//cdn.rawgit.com/Alex-D/Trumbowyg/2.0.0-beta.7/dist/trumbowyg.min.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" media="all" href="//cdn.rawgit.com/Alex-D/Trumbowyg/2.0.0-beta.7/dist/ui/trumbowyg.min.css">
+
+<!-- Nic Edit -->
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js" charset="utf-8"></script>
+
+<!-- Textbox -->
+<script type="text/javascript" src="//clouddelivery.textbox.io/1/getEditor?apiKey=1wugguwjiatkm69xmt7w1den1mpvqkxi75mwfmb49lz89o4r" charset="utf-8"></script>
+
+<!-- Kendo -->
+<link rel="stylesheet" type="text/css" media="all" href="//kendo.cdn.telerik.com/2015.3.1111/styles/kendo.common.min.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//kendo.cdn.telerik.com/2015.3.1111/styles/kendo.default.min.css" />
+<script type="text/javascript" src="//kendo.cdn.telerik.com/2015.3.1111/js/kendo.all.min.js" charset="utf-8"></script>
+
+<!-- Content tools -->
+<link rel="stylesheet" type="text/css" media="all" href="assets/content-tools.min.css">
+<script type="text/javascript" src="assets/content-tools.min.js" charset="utf-8"></script>
+    
+<!-- SC Editor -->
+<link rel="stylesheet" href="//www.sceditor.com/minified/themes/default.min.css" />
+<script type="text/javascript" src="//www.sceditor.com/minified/jquery.sceditor.bbcode.min.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+
+
+<div class="container">
+	<div class="header clearfix">
+		<h1 class="text-muted">Web based Wysiwyg editors</h1>
+	</div>
+      
+	<div class="content panel panel-default">
+	
+		<!-- S: CK Editor -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">CK Editor</div>
+			<div class="panel-body">
+				<textarea name="editorAreaCK" id="editorAreaCK" rows="10" cols="80">
+				This is my textarea to be replaced with CKEditor.
+				</textarea>
+			</div>
+		</div>
+		<!-- E: CK Editor -->
+		
+		<!-- S: Tiny MCE -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">Tiny MCE</div>
+			<div class="panel-body">
+				<div id="editorAreaTinyMCE">Click here to edit!</div>
+			</div>
+		</div>
+		<!-- E: Tiny MCE -->
+		
+		<!-- S: Naver Smart Editor -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">Naver Smart Editor</div>
+			<div class="panel-body">
+				<textarea name="editorAreaSmartEditor" id="editorAreaSmartEditor" rows="10" cols="100">
+				에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.
+				</textarea>
+			</div>
+		</div>
+		<!-- E: Naver Smart Editor -->
+		
+		<!-- S: CL Editor -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">CL Editor</div>
+			<div class="panel-body">
+				<textarea id="editorAreaCLEditor" name="editorAreaCLEditor">text</textarea>
+			</div>
+		</div>
+		<!-- E: CL Editor -->
+		
+		<!-- S: Froala Editor -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">Froala Editor</div>
+			<div class="panel-body">
+				<textarea id="editorAreaFroala" name="editorAreaFroala"></textarea>
+			</div>
+		</div>
+		<!-- E: Froala Editor -->
+		
+		<!-- S: Redactor Editor -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">Redactor Editor</div>
+			<div class="panel-body">
+				<textarea id="editorAreaRedactor" name="editorAreaRedactor">red</textarea>
+			</div>
+		</div>
+		<!-- E: Redactor Editor -->
+		
+		<!-- S: Summernote Editor -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">Summernote Editor</div>
+			<div class="panel-body">
+				<div id="editorAreaSummernote">Hello Summernote</div>
+			</div>
+		</div>
+		<!-- E: Summernote Editor -->
+		
+		<!-- S: Alloy Editor -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">Alloy Editor</div>
+			<div class="panel-body">
+				<div id="editorAreaAlloy">Hello Alloy Editor</div>
+			</div>
+		</div>
+		<!-- E: Alloy Editor -->
+		
+		<!-- S: Trumbowyg -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">Trumbowyg</div>
+			<div class="panel-body">
+				<div id="editorArreaTrumbowyg">Hello Trumbowyg</div>
+			</div>
+		</div>
+		<!-- E: Trumbowyg -->
+		
+		<!-- S: Nic Edit -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">Nic Edit</div>
+			<div class="panel-body">
+				<textarea name="editorAreaNic" id="editorAreaNic" style="width: 100%;">
+				</textarea>
+			</div>
+		</div>
+		<!-- E: Nic Edit -->
+		
+		<!-- S: Textbox -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">Textbox</div>
+			<div class="panel-body">
+				<textarea id="editorAreaTextbox" style="height:200px">Hello Textbox.io</textarea>
+			</div>
+		</div>
+		<!-- E: Textbox -->
+		
+		<!-- S: Kendo -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">Kendo</div>
+			<div class="panel-body">
+			    <div id="editorAreaKendo">
+			        <h2>
+			            Comprehensive HTML5/JavaScript framework <br />
+			            for modern web and mobile app development
+			        </h2>
+			        <p>
+			            Kendo UI is everything professional developers need
+			            to build HTML5 sites and mobile apps. Today, productivity
+			            of an average HTML/jQuery developer is hampered by
+			            assembling a Frankenstein framework of disparate
+			            JavaScript libraries and plug-ins.
+			        </p>
+			        <p>
+			            Kendo UI has it all: rich jQuery-based widgets,
+			            a simple and consistent programming interface,
+			            a rock-solid DataSource, validation, internationalization,
+			            a MVVM framework, themes, templates and the list goes on.
+			        </p>
+			    </div>
+			</div>
+		</div>
+		<!-- E: Kendo -->
+		
+		<!-- S: Content tools -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">Content tools</div>
+			<div class="panel-body">
+			    <div data-editable data-name="main-content">
+				    <blockquote>
+				        Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.
+				    </blockquote>
+			    </div>
+			    <p>John F. Woods</p>
+			</div>
+		</div>
+		<!-- E: Content tools -->
+		
+		<!-- S: SC Editor -->
+		<div class="panel-default panel-item">
+			<div class="panel-heading">SC Editor</div>
+			<div class="panel-body">
+				<textarea id="editorAreaSC" style="width:100%;height:200px">Hello SC Editor</textarea>
+			</div>
+		</div>
+		<!-- E: SC Editor -->
+		
+	</div>
+	
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+var selectedPanelIndex = 0;
+var panelContentInitializer = [
+	// CK Editor
+	function() {
+		CKEDITOR.replace('editorAreaCK');
+	},
+	// Tiny MCE
+	function() {
+		tinymce.init({
+			selector: '#editorAreaTinyMCE',
+			inline: true
+		});
+	},
+	// Naver Smart Editor
+	function() {
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+			elPlaceHolder: "editorAreaSmartEditor",
+			sSkinURI: "SmartEditor2Skin.html",
+			fCreator: "createSEditor2"
+		});
+	},
+	// CL Editor
+	function() {
+		$("#editorAreaCLEditor").cleditor();
+	},
+	// Froala Editor
+	function() {
+		$('#editorAreaFroala').froalaEditor();
+	},
+	// Redactor Editor
+	function() {
+		$('#editorAreaRedactor').redactor();
+	},
+	// Summernote Editor
+	function() {
+		$('#editorAreaSummernote').summernote();
+	},
+	// Alloy Editor
+	function() {
+		AlloyEditor.editable('editorAreaAlloy');
+	},
+	// Trumbowyg
+	function() {
+		$('#editorArreaTrumbowyg').trumbowyg({
+			fullscreenable: false,
+			closable: true,
+			btns: ['bold', 'italic', '|', 'insertImage']
+		});
+	},
+	// Nic Edit
+	function() {
+		new nicEditor({fullPanel : true}).panelInstance('editorAreaNic');
+	},
+	// Textbox
+	function() {
+		var editor = textboxio.replace('#editorAreaTextbox');
+	},
+	// Kendo
+	function() {
+		$("#editorAreaKendo").kendoEditor({ resizable: {
+			content: true,
+			toolbar: true
+		}});
+	},
+	// Content tools
+	function() {
+		var editor;
+		editor = ContentTools.EditorApp.get();
+		editor.init('*[data-editable]', 'data-name');
+		editor.bind('save', function (regions) {
+			this.busy(true);
+			
+			setTimeout(function(){
+				editor.busy(false);
+				new ContentTools.FlashUI('ok');
+			}, 1000);
+		});
+	},
+	// SC Editor
+	function() {
+		$("#editorAreaSC").sceditor({
+			plugins: "bbcode",
+			style: "http://www.sceditor.com/minified/jquery.sceditor.default.min.css"
+		});
+	}
+];
+$(function(){
+	var selectPanel = function(el) {
+		var panels = $(".panel > .panel-item");
+		var l = panels.length;
+		if(!l) {
+			return;
+		}
+		
+		selectedPanelIndex = panels.index(el);
+		for(var i = 0; i < l; i++) {
+			var panel = $(panels[i]);
+			
+			if(i == selectedPanelIndex) {
+				if(!panel.hasClass("selected")) {
+					panel.addClass("selected");
+					if(!panel.prop("initialized") && i < panelContentInitializer.length) {
+						panelContentInitializer[i].call();
+					}
+					continue;
+				}
+			}
+			panel.removeClass("selected");
+			// Exception for content tools fixed menu
+			if(i == 12) {
+				if(panel.hasClass("selected")) {
+					$(".ct-app").fadeIn();
+				} else {
+					$(".ct-app").fadeOut();
+				}
+			}
+		}
+	};
+	
+	var panelHeaders = $(".panel-heading");
+	panelHeaders.click(function(){
+		selectPanel(this.parentElement);
+	});
+	
+	selectPanel(panelHeaders[0].parentElement);
+});
+</script>
+
+</html>
