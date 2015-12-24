@@ -1,0 +1,25 @@
+.container {
+	padding: 0 15px;
+}
+.content {
+	margin-top: 30px;
+}
+.panel-default > .panel-heading {
+	background-color: #ffffff;
+}
+.panel-default.selected > .panel-heading {
+	background-color: #f5f5f5;
+}
+.panel-default > .panel-body {
+	display: none;
+}
+.panel-default.selected > .panel-body {
+	display: block;
+}
+.panel-body {
+	border-bottom: 1px solid #ddd;
+}
+.editor {
+	border-bottom: solid 1px black;
+	padding-bottom: 20px;
+}
